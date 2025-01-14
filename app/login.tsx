@@ -10,16 +10,12 @@ import { Divider } from "@/components/Divider";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 
 export default function Login() {
-  const [authMode, setAuthMode] = useState<"Iniciar sesión" | "Registrarse">(
-    "Iniciar sesión"
-  );
+  const [authMode, setAuthMode] = useState<"login" | "register">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   function onToggleAuthMode() {
-    setAuthMode(
-      authMode === "Iniciar sesión" ? "Registrarse" : "Iniciar sesión"
-    );
+    setAuthMode(authMode === "login" ? "register" : "login");
   }
 
   return (
@@ -73,14 +69,14 @@ export default function Login() {
               isLoading={false} // TODO: Add loading state auth provider
               onPress={() => {}} // TODO: Add loading state auth provider
             >
-              {authMode === "Iniciar sesión" ? "Iniciar sesión" : "Registrarse"}
+              {authMode === "login" ? "Iniciar sesión" : "Registrarse"}
             </Button>
           </VStack>
 
           <Divider w={"90%"} />
 
           <Text onPress={onToggleAuthMode} fontSize={16} underline>
-            {authMode === "Iniciar sesión" ? "Registrarse" : "Iniciar sesión"}
+            {authMode === "login" ? "Registrarse" : "Iniciar sesión"}
           </Text>
         </VStack>
       </ScrollView>
