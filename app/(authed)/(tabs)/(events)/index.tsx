@@ -37,17 +37,17 @@ export default function EventsScreen() {
     }
   }
 
-  const fetchEvents = useCallback(async () => {
+  const fetchEvents = async () => {
     try {
       setIsLoading(true);
       const response = await eventService.getAll();
       setEvents(response.data);
     } catch (error) {
-      Alert.alert("Error", "Error encontrando eventos");
+      Alert.alert("Error", "Error al cargar los eventos");
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  };
 
   useFocusEffect(
     useCallback(() => {
@@ -56,13 +56,11 @@ export default function EventsScreen() {
   );
 
   useEffect(() => {
-    fetchEvents();
-
     navigation.setOptions({
       headerTitle: "Eventos",
       headerRight: user?.role === UserRole.Manager ? headerRight : null,
     });
-  }, [fetchEvents, navigation]);
+  }, [navigation, user]);
 
   return (
     <VStack flex={1} p={20} pb={0} gap={20}>
