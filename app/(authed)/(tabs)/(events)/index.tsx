@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Alert, FlatList, TouchableOpacity } from "react-native";
-import { router, useNavigation } from "expo-router";
+import { router, useFocusEffect, useNavigation } from "expo-router";
 
 import { eventService } from "@/services/event";
 import { Event } from "@/types/event";
@@ -48,6 +48,12 @@ export default function EventsScreen() {
       setIsLoading(false);
     }
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      fetchEvents();
+    }, [])
+  );
 
   useEffect(() => {
     fetchEvents();
