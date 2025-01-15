@@ -30,6 +30,10 @@ export default function NewEvent() {
     }
   }
 
+  function onChangeDate(date?: Date) {
+    setDate(date || new Date());
+  }
+
   useEffect(() => {
     navigation.setOptions({ headerTitle: "Nuevo evento" });
   }, []);
@@ -68,7 +72,7 @@ export default function NewEvent() {
         <Text ml={10} fontSize={14} color="gray">
           Fecha
         </Text>
-        {/* DateTimePicker */}
+        <DateTimePicker onChange={onChangeDate} currentDate={date} />
       </VStack>
 
       <Button
