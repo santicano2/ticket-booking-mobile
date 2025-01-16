@@ -8,6 +8,7 @@ import { VStack } from "@/components/VStack";
 import { Text } from "@/components/Text";
 import { Input } from "@/components/Input";
 import { Button } from "@/components/Button";
+import DateTimePicker from "@/components/DateTimePicker";
 
 export default function NewEvent() {
   const navigation = useNavigation();
