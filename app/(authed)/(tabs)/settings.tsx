@@ -1,5 +1,14 @@
-import React from "react";
+import { useAuth } from "@/context/AuthContext";
+
+import { VStack } from "@/components/VStack";
+import { Button } from "@/components/Button";
 
 export default function SettingsScreen() {
-  return <></>;
+  const { logout } = useAuth();
+
+  return (
+    <VStack flex={1} m={20}>
+      <Button onPress={logout}>Cerrar sesión</Button>
+    </VStack>
+  );
 }
