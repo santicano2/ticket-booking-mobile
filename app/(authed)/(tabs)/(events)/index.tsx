@@ -3,6 +3,7 @@ import { Alert, FlatList, TouchableOpacity } from "react-native";
 import { router, useFocusEffect, useNavigation } from "expo-router";
 
 import { eventService } from "@/services/event";
+import { ticketService } from "@/services/ticket";
 import { Event } from "@/types/event";
 import { UserRole } from "@/types/user";
 import { useAuth } from "@/context/AuthContext";
@@ -29,7 +30,7 @@ export default function EventsScreen() {
 
   async function buyTicket(id: number) {
     try {
-      //await ticketService.createOne(id);
+      await ticketService.createOne(id);
       Alert.alert("Success", "Ticket comprado exitosamente");
       fetchEvents();
     } catch (error) {
